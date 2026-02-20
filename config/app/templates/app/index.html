@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Servis Markazi</title>
+</head>
+<body>
+
+<style>
+.title {font-size: 50px;
+    text-align: center;
+    background: chartreuse;
+    text-shadow: 10px 10px 10px crimson;}
+</style>
+
+<h1 class="title">Servis Markazi</h1>
+
+<div style="text-align:center; margin:20px;">
+    <a href="{% url 'create_category' %}">➕ Category qo‘shish</a>
+    <a href="{% url 'create_mechanic' %}">➕ Mechanic qo‘shish</a>
+    <a href="{% url 'create_service' %}">➕ Service qo‘shish</a>
+</div>
+
+
+{% if services_categories %}
+<h2 class="title" >Categories</h2>
+{% for services_category in services_categories %}
+<hr >
+<ul>
+    <li>
+        <a href="{% url 'services_by_category' services_category.id %}">
+        Category Name: {{services_category.name}}</a>
+    </li>
+    <li>Description: {{services_category.description}}</li>
+</ul>
+<hr>
+{% endfor %}
+{% endif %}
+
+
+{% if mechanics %}
+<h2 class="title">Mechanic</h2>
+{% for mechanic in mechanics %}
+  <h1><a href="{% url 'mechanic_detail' mechanic.id %}">{{ mechanic.full_name }}</a></h1>
+
+  <a href="{% url 'mechanic_detail' mechanic.id %}">
+    {% if mechanic.image %}
+    <li>Rasmi: <a href="{% url 'mechanic_detail' mechanic.id %}">
+        <img src="{{ mechanic.image.url }}" width="300px">
+    </a></li>
+    {% else %}
+    <li>Rasmi: <a href="{% url 'mechanic_detail' mechanic.id %}">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeKOXy7GSVGKOL7rH7ttHPvOkQA17W0weeAg&s" width="300px">
+    </a></li>
+
+
+    {% endif %}
+
+    {% if mechanic.video %}
+    <li>
+        <video src="{{ mechanic.video.url }}" controls></video>
+    </li>
+    {% endif %}
+  </a>
+
+{% endfor %}
+{% endif %}
+
+
+
+{% if services %}
+<h2 class="title" >services</h2>
+{% for service in services %}
+<hr >
+<ul>
+    <li><a href="{% url 'services_detail' service.id %}">
+        Service Name: {{service.name}}</a></li>
+    <li>Description: {{service.description}}</li>
+    <li>Description: {{service.price}}</li>
+    <li>Description: {{service.duration}}</li>
+    <li>Description: {{service.is_available}}</li>
+</ul>
+<hr>
+{% endfor %}
+{% endif %}
+
+
+</body>
+</html>

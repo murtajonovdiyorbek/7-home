@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <title>Service Detail</title>
+    <style>
+        .title {
+            font-size: 50px;
+            text-align: center;
+            background: chartreuse;
+            text-shadow: 10px 10px 10px crimson;
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="{% url 'home' %}">
+    <h1 class="title">Servis Markazi</h1>
+</a>
+
+<div class="card">
+    <h2>{{ service.name }}</h2>
+    <p><strong>Description:</strong> {{ service.description }}</p>
+    <p><strong>Price:</strong> {{ service.price }} so'm</p>
+    <p><strong>Duration:</strong> {{ service.duration }} daqiqa</p>
+    <p><strong>Available:</strong> {{ service.is_available }}</p>
+
+    {% if service.category %}
+        <p><strong>Category:</strong> {{ service.category.name }}</p>
+    {% endif %}
+
+    {% if service.mechanic %}
+        <p>
+            <strong>Mechanic:</strong>
+            <a href="{% url 'mechanic_detail' service.mechanic.id %}">
+                {{ service.mechanic.full_name }}
+            </a>
+        </p>
+    {% endif %}
+</div>
+
+<a class="back-btn" href="{% url 'home' %}">⬅ Ortga</a>
+
+</body>
+</html>

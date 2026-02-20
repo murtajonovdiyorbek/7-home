@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <title>Mechanic Detail</title>
+
+    <style>
+        .title {
+            text-align: center;
+            background: chartreuse;
+            text-shadow: 10px 10px 10px crimson;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<a href="{% url 'home' %}">
+    <h1 class="title">Servis Markazi</h1>
+</a>
+
+<div class="card">
+
+    <h2>{{ mechanic.full_name }}</h2>
+
+    {% if mechanic.image %}
+        <img src="{{ mechanic.image.url }}" width="250">
+    {% endif %}
+
+    <p><strong>Experience:</strong> {{ mechanic.experience_year }} yil</p>
+    <p><strong>Phone:</strong> {{ mechanic.phone }}</p>
+    <p><strong>Active:</strong> {{ mechanic.is_active }}</p>
+
+</div>
+
+<a class="back-btn" href="{% url 'home' %}">⬅ Ortga</a>
+
+</body>
+</html>
