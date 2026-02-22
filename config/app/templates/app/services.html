@@ -16,7 +16,11 @@
 
 <a href="{% url 'home' %}">
     <h1 class="title">Servis Markazi</h1>
+    <hr>
 </a>
+<a href="{% url 'update_service' services.id %}">Update</a>
+<a href="{% url 'delete_service' services.id %}">Delete</a>
+
 
 <div class="card">
     <h2>{{ service.name }}</h2>

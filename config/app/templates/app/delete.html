@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.name }}</title>
+</head>
+<body>
+
+<h2>Delete</h2>
+
+<p>Rostdan ham ochirmoqchimisiz?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Ha</button>
+    <a href="{% url 'home' %}">Ortga</a>
+</form>
+
+</body>
+</html>

@@ -19,11 +19,10 @@
 <h1 class="title">Servis Markazi</h1>
 
 <div style="text-align:center; margin:20px;">
-    <a href="{% url 'create_category' %}">➕ Category qo‘shish</a>
-    <a href="{% url 'create_mechanic' %}">➕ Mechanic qo‘shish</a>
-    <a href="{% url 'create_service' %}">➕ Service qo‘shish</a>
+    <a href="{% url 'create_category' %}">➕ Category qoshish</a>
+    <a href="{% url 'create_mechanic' %}">➕ Mechanic qoshish</a>
+    <a href="{% url 'create_service' %}">➕ Service qoshish</a>
 </div>
-
 
 {% if services_categories %}
 <h2 class="title" >Categories</h2>
@@ -34,6 +33,11 @@
         <a href="{% url 'services_by_category' services_category.id %}">
         Category Name: {{services_category.name}}</a>
     </li>
+    <li>
+
+        <a href="{% url 'update_category' services_category.id %}">Update</a>
+        <a href="{% url 'delete_category' services_category.id %}">Delete</a>
+</li>
     <li>Description: {{services_category.description}}</li>
 </ul>
 <hr>
@@ -57,12 +61,6 @@
     </a></li>
 
 
-    {% endif %}
-
-    {% if mechanic.video %}
-    <li>
-        <video src="{{ mechanic.video.url }}" controls></video>
-    </li>
     {% endif %}
   </a>
 
